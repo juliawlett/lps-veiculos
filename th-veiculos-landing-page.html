@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f36f21" />
+  <meta name="description" content="TH Veículos em Cuiabá-MT. Seminovos, avaliação do seu usado, financiamento e atendimento personalizado." />
+  <title>TH Veículos | Seminovos em Cuiabá - MT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --orange: #f36f21;
+      --orange-dark: #d9570f;
+      --orange-soft: #fff2e9;
+      --ink: #171717;
+      --ink-2: #272727;
+      --muted: #707070;
+      --line: #e9e9e9;
+      --surface: #f7f7f7;
+      --white: #ffffff;
+      --success: #1f9d55;
+      --shadow: 0 18px 50px rgba(19, 19, 19, 0.09);
+      --shadow-soft: 0 10px 30px rgba(19, 19, 19, 0.06);
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --radius-sm: 12px;
+      --container: min(1180px, calc(100% - 40px));
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+    body {
+      margin: 0;
+      font-family: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--white);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    body.menu-open { overflow: hidden; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+    button { cursor: pointer; }
+    section { scroll-margin-top: 92px; }
+
+    .container { width: var(--container); margin-inline: auto; }
+    .section { padding: 96px 0; }
+    .section-sm { padding: 72px 0; }
+    .section-gray { background: var(--surface); }
+    .section-dark { background: var(--ink); color: var(--white); }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+      color: var(--orange-dark);
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 3px;
+      border-radius: 99px;
+      background: var(--orange);
+    }
+    .section-dark .eyebrow { color: #ffb382; }
+
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      margin-bottom: 22px;
+      font-size: clamp(2.45rem, 6vw, 5.1rem);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+      font-weight: 800;
+    }
+    h2 {
+      margin-bottom: 18px;
+      font-size: clamp(2rem, 3.8vw, 3.35rem);
+      line-height: 1.04;
+      letter-spacing: -0.04em;
+      font-weight: 800;
+    }
+    h3 {
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      font-weight: 800;
+    }
+    .lead { max-width: 700px; color: var(--muted); font-size: 1.05rem; }
+    .section-dark .lead { color: #c6c6c6; }
+
+    .btn {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 0 20px;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 0.93rem;
+      transition: 0.2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:focus-visible, .nav-link:focus-visible, .filter-btn:focus-visible, .faq-btn:focus-visible {
+      outline: 3px solid rgba(243, 111, 33, 0.32);
+      outline-offset: 3px;
+    }
+    .btn-primary { background: var(--orange); color: var(--white); box-shadow: 0 10px 24px rgba(243, 111, 33, 0.23); }
+    .btn-primary:hover { background: var(--orange-dark); }
+    .btn-secondary { background: var(--white); color: var(--ink); border-color: #dcdcdc; }
+    .btn-secondary:hover { border-color: var(--orange); color: var(--orange-dark); }
+    .btn-dark { background: var(--ink); color: var(--white); }
+    .btn-dark:hover { background: #2f2f2f; }
+    .btn-ghost-light { background: rgba(255,255,255,0.08); color: var(--white); border-color: rgba(255,255,255,0.2); }
+    .btn-ghost-light:hover { background: rgba(255,255,255,0.14); }
+
+    .top-strip {
+      background: #101010;
+      color: #d9d9d9;
+      font-size: 0.78rem;
+    }
+    .top-strip-inner {
+      min-height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .top-strip-group { display: flex; align-items: center; gap: 18px; }
+    .top-item { display: inline-flex; align-items: center; gap: 7px; }
+    .top-item svg { width: 14px; height: 14px; color: var(--orange); }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+    .brand { display: inline-flex; align-items: center; gap: 11px; min-width: max-content; }
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border: 4px solid var(--ink);
+      border-right-color: var(--orange);
+      border-radius: 50%;
+      font-weight: 900;
+      font-size: 0.83rem;
+      letter-spacing: -0.08em;
+    }
+    .brand-text { display: grid; line-height: 1; }
+    .brand-text strong { font-size: 1.08rem; letter-spacing: -0.04em; }
+    .brand-text span { margin-top: 4px; color: var(--orange-dark); font-size: 0.66rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 26px; }
+    .nav-link { color: #4e4e4e; font-size: 0.84rem; font-weight: 700; transition: color .2s ease; }
+    .nav-link:hover { color: var(--orange-dark); }
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+    .menu-btn {
+      display: none;
+      width: 46px;
+      height: 46px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--white);
+      color: var(--ink);
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 45;
+      padding: 124px 24px 30px;
+      background: var(--white);
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu nav { display: grid; gap: 0; }
+    .mobile-menu a {
+      padding: 17px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 1.15rem;
+      font-weight: 800;
+    }
+    .mobile-menu .btn { width: 100%; margin-top: 24px; }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: #151515;
+      color: var(--white);
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 14% 20%, rgba(243,111,33,0.19), transparent 32%),
+        linear-gradient(110deg, rgba(255,255,255,0.04) 0 1px, transparent 1px 100%);
+      background-size: auto, 34px 34px;
+      pointer-events: none;
+    }
+    .hero-grid {
+      position: relative;
+      min-height: 680px;
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 64px;
+      align-items: center;
+      padding: 72px 0;
+    }
+    .hero-copy { position: relative; z-index: 2; }
+    .hero-copy h1 span { color: var(--orange); }
+    .hero-copy p { max-width: 610px; margin-bottom: 30px; color: #cfcfcf; font-size: 1.03rem; }
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 30px; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 20px; color: #dddddd; font-size: 0.84rem; }
+    .hero-meta span { display: inline-flex; align-items: center; gap: 7px; }
+    .hero-meta svg { width: 16px; color: var(--orange); }
+
+    .hero-visual {
+      position: relative;
+      min-height: 500px;
+      align-self: stretch;
+    }
+    .hero-photo {
+      position: absolute;
+      inset: 24px 0 24px 36px;
+      overflow: hidden;
+      border-radius: 26px 0 0 26px;
+      background: #222;
+      box-shadow: 0 34px 80px rgba(0,0,0,.35);
+    }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center; filter: saturate(.85) contrast(1.02); }
+    .hero-photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(21,21,21,.42), transparent 45%), linear-gradient(0deg, rgba(0,0,0,.2), transparent 42%);
+    }
+    .hero-badge {
+      position: absolute;
+      left: 0;
+      bottom: 60px;
+      z-index: 2;
+      width: 210px;
+      padding: 18px;
+      border-radius: 14px;
+      background: var(--white);
+      color: var(--ink);
+      box-shadow: var(--shadow);
+    }
+    .rating { display: flex; align-items: baseline; gap: 8px; }
+    .rating strong { font-size: 2rem; letter-spacing: -0.05em; }
+    .stars { color: var(--orange); letter-spacing: 1px; font-size: .92rem; }
+    .hero-badge p { margin: 5px 0 0; color: var(--muted); font-size: 0.74rem; }
+    .hero-tag {
+      position: absolute;
+      right: 26px;
+      top: 6px;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 999px;
+      background: rgba(23,23,23,.72);
+      backdrop-filter: blur(12px);
+      color: #f5f5f5;
+      font-size: .78rem;
+      font-weight: 700;
+    }
+    .hero-tag i, .hero-tag svg { width: 15px; color: var(--orange); }
+
+    .stock-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 36px;
+    }
+    .stock-head .lead { margin-bottom: 0; }
+    .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+    .filter-btn {
+      min-height: 40px;
+      padding: 0 15px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--white);
+      color: #565656;
+      font-size: .8rem;
+      font-weight: 800;
+    }
+    .filter-btn.active, .filter-btn:hover { border-color: var(--orange); background: var(--orange-soft); color: var(--orange-dark); }
+
+    .stock-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .vehicle-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--white);
+      box-shadow: var(--shadow-soft);
+      transition: transform .22s ease, box-shadow .22s ease;
+    }
+    .vehicle-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+    .vehicle-card[hidden] { display: none !important; }
+    .vehicle-image { position: relative; aspect-ratio: 4/3; overflow: hidden; background: #ececec; }
+    .vehicle-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease; }
+    .vehicle-card:hover .vehicle-image img { transform: scale(1.025); }
+    .vehicle-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      padding: 7px 10px;
+      border-radius: 7px;
+      background: rgba(23,23,23,.9);
+      color: var(--white);
+      font-size: .68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .vehicle-body { padding: 20px; }
+    .vehicle-brand { margin-bottom: 6px; color: var(--orange-dark); font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; }
+    .vehicle-title { min-height: 48px; margin-bottom: 15px; font-size: 1.05rem; }
+    .vehicle-specs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 18px; }
+    .spec { display: flex; align-items: center; gap: 7px; color: #626262; font-size: .76rem; }
+    .spec svg { width: 15px; height: 15px; color: #929292; }
+    .vehicle-price { margin-bottom: 16px; padding-top: 16px; border-top: 1px solid var(--line); }
+    .vehicle-price small { display: block; margin-bottom: 2px; color: #8a8a8a; font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
+    .vehicle-price strong { font-size: 1.45rem; letter-spacing: -.04em; }
+    .vehicle-actions { display: grid; grid-template-columns: 1fr auto; gap: 9px; }
+    .vehicle-actions .btn { min-height: 44px; }
+    .icon-btn { width: 44px; padding: 0; }
+    .stock-bottom { margin-top: 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 13px 16px; border: 1px solid var(--line); border-radius: 12px; background: #fbfbfb; }
+    .stock-bottom p { margin: 0; color: #626262; font-size: .82rem; line-height: 1.45; }
+    .stock-bottom .btn { min-height: 38px; padding-inline: 14px; font-size: .76rem; }
+
+    .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 38px; }
+    .feature-card { padding: 26px 22px; border: 1px solid var(--line); border-radius: 14px; background: var(--white); }
+    .feature-icon {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      background: var(--orange-soft);
+      color: var(--orange-dark);
+    }
+    .feature-icon svg { width: 23px; height: 23px; }
+    .feature-card p { margin-bottom: 0; color: var(--muted); font-size: .85rem; }
+
+    .finance-wrap {
+      display: grid;
+      grid-template-columns: minmax(0, 2.25fr) minmax(300px, .95fr);
+      gap: 46px;
+      align-items: center;
+    }
+    .finance-content { display: flex; flex-direction: column; justify-content: center; }
+    .finance-content h2 { max-width: 720px; }
+    .finance-content .lead { max-width: 680px; margin-bottom: 22px; }
+    .process { display: grid; gap: 10px; margin-top: 4px; }
+    .process-item {
+      display: grid;
+      grid-template-columns: 38px 1fr;
+      gap: 12px;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid #3b3b3b;
+    }
+    .process-num {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: rgba(243,111,33,.12);
+      color: var(--orange);
+      font-size: .7rem;
+      font-weight: 800;
+    }
+    .process-item strong { display: block; margin-bottom: 1px; font-size: .9rem; }
+    .process-item span { color: #bcbcbc; font-size: .78rem; }
+    .finance-note { margin-top: 16px; max-width: 680px; color: #999; font-size: .69rem; line-height: 1.55; }
+
+    .form-card {
+      min-height: 430px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 30px 26px;
+      border-radius: 20px;
+      background: var(--white);
+      color: var(--ink);
+      box-shadow: 0 28px 80px rgba(0,0,0,.28);
+    }
+    .form-card h3 { margin-bottom: 6px; font-size: 1.4rem; }
+    .form-card > p { max-width: 320px; color: var(--muted); font-size: .8rem; margin-bottom: 22px; }
+    .form-card .field input, .form-card .field select { min-height: 52px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .field { display: grid; gap: 6px; }
+    .field.full { grid-column: 1 / -1; }
+    .field label { font-size: .7rem; font-weight: 800; color: #5c5c5c; }
+    .field input, .field select, .field textarea {
+      width: 100%;
+      min-height: 46px;
+      border: 1px solid #dcdcdc;
+      border-radius: 9px;
+      background: #fff;
+      padding: 0 12px;
+      outline: none;
+      transition: border .2s ease, box-shadow .2s ease;
+    }
+    .field textarea { min-height: 96px; padding-top: 12px; resize: vertical; }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(243,111,33,.12); }
+    .form-card .btn { width: 100%; margin-top: 14px; }
+
+    .trade-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 56px; align-items: center; }
+    .trade-photo { position: relative; min-height: 520px; overflow: hidden; border-radius: var(--radius-lg); }
+    .trade-photo img { width: 100%; height: 100%; min-height: 520px; object-fit: cover; }
+    .trade-photo::after { content:""; position:absolute; inset:0; background: linear-gradient(0deg, rgba(0,0,0,.38), transparent 55%); }
+    .trade-float {
+      position: absolute;
+      z-index: 2;
+      left: 22px;
+      right: 22px;
+      bottom: 22px;
+      padding: 20px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.94);
+      backdrop-filter: blur(10px);
+    }
+    .trade-float strong { display: block; margin-bottom: 4px; }
+    .trade-float span { color: var(--muted); font-size: .8rem; }
+    .trade-list { display: grid; gap: 14px; margin: 26px 0 30px; }
+    .trade-list-item { display: flex; align-items: flex-start; gap: 12px; }
+    .trade-list-icon { flex: 0 0 34px; height: 34px; display: grid; place-items: center; border-radius: 8px; background: var(--orange-soft); color: var(--orange-dark); }
+    .trade-list-icon svg { width: 17px; }
+    .trade-list-item p { margin-bottom: 0; color: var(--muted); font-size: .86rem; }
+
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    .about-visual {
+      min-height: 500px;
+      overflow: hidden;
+      border-radius: 16px;
+      background: #e8e8e8;
+    }
+    .about-visual img { width: 100%; height: 100%; min-height: 500px; object-fit: cover; display: block; }
+    .about-numbers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 28px; }
+    .about-number { padding: 18px 16px; border: 1px solid var(--line); border-radius: 12px; }
+    .about-number strong { display: block; font-size: 1.35rem; letter-spacing: -.04em; }
+    .about-number span { color: var(--muted); font-size: .72rem; }
+
+    .reviews-top { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 32px; }
+    .reviews-score { min-width: 190px; text-align: right; }
+    .reviews-score strong { display: block; font-size: 2.35rem; line-height: 1; letter-spacing: -.05em; }
+    .reviews-score span { color: var(--muted); font-size: .76rem; }
+    .reviews-carousel { position: relative; overflow: hidden; }
+    .reviews-track { display: flex; gap: 18px; will-change: transform; transition: transform .55s cubic-bezier(.22,.61,.36,1); }
+    .review-card { flex: 0 0 calc((100% - 36px) / 3); display: flex; flex-direction: column; min-height: 250px; padding: 24px; border: 1px solid var(--line); border-radius: 14px; background: var(--white); }
+    .review-card .stars { margin-bottom: 18px; }
+    .review-card blockquote { margin: 0 0 24px; color: #454545; font-size: .9rem; line-height: 1.7; }
+    .review-person { margin-top: auto; display: flex; align-items: center; gap: 11px; }
+    .avatar { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 50%; background: var(--orange-soft); color: var(--orange-dark); font-weight: 900; }
+    .review-person strong { display: block; font-size: .8rem; }
+    .review-person span { color: var(--muted); font-size: .68rem; }
+    .reviews-controls { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-top: 20px; }
+    .reviews-arrows { display: flex; gap: 8px; }
+    .review-arrow { width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 10px; background: var(--white); color: var(--ink); cursor: pointer; transition: border-color .2s ease, color .2s ease, transform .2s ease; }
+    .review-arrow:hover, .review-arrow:focus-visible { border-color: var(--orange); color: var(--orange-dark); transform: translateY(-1px); outline: none; }
+    .review-arrow svg { width: 18px; height: 18px; }
+    .reviews-dots { display: flex; align-items: center; gap: 7px; }
+    .review-dot { width: 7px; height: 7px; padding: 0; border: 0; border-radius: 999px; background: #d7d7d7; cursor: pointer; transition: width .25s ease, background .25s ease; }
+    .review-dot.active { width: 22px; background: var(--orange); }
+    .review-dot:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+
+    .faq-wrap { display: grid; grid-template-columns: .8fr 1.2fr; gap: 60px; align-items: start; }
+    .faq-list { border-top: 1px solid var(--line); }
+    .faq-item { border-bottom: 1px solid var(--line); }
+    .faq-btn {
+      width: 100%;
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--ink);
+      text-align: left;
+      font-weight: 800;
+    }
+    .faq-btn svg { flex: 0 0 auto; width: 18px; transition: transform .2s ease; }
+    .faq-answer { max-height: 0; overflow: hidden; color: var(--muted); font-size: .86rem; transition: max-height .25s ease; }
+    .faq-answer p { padding: 0 0 20px; margin: 0; }
+    .faq-item.open .faq-answer { max-height: 220px; }
+    .faq-item.open .faq-btn svg { transform: rotate(45deg); }
+
+    #localizacao { padding: 46px 0; }
+    .location-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 20px; align-items: stretch; }
+    .location-card { padding: 22px 24px; border-radius: 16px; background: var(--ink); color: var(--white); }
+    .location-card h2 { margin-bottom: 10px; font-size: clamp(1.75rem, 2.5vw, 2.35rem); }
+    .location-card .lead { font-size: .84rem; line-height: 1.55; }
+    .location-list { display: grid; gap: 9px; margin: 16px 0 18px; }
+    .location-row { display: grid; grid-template-columns: 38px 1fr; gap: 10px; align-items: start; }
+    .location-icon { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 9px; background: rgba(243,111,33,.13); color: var(--orange); }
+    .location-icon svg { width: 17px; }
+    .location-row strong { display: block; margin-bottom: 3px; font-size: .8rem; }
+    .location-row span { color: #bfbfbf; font-size: .76rem; }
+    .map { min-height: 310px; overflow: hidden; border-radius: 16px; border: 1px solid var(--line); }
+    .map iframe { width: 100%; height: 100%; min-height: 310px; border: 0; }
+
+    .final-cta {
+      position: relative;
+      overflow: hidden;
+      background: var(--orange);
+      color: var(--white);
+    }
+    .final-cta::after {
+      content: "TH";
+      position: absolute;
+      right: -60px;
+      bottom: -100px;
+      font-size: 24rem;
+      line-height: .8;
+      font-weight: 900;
+      letter-spacing: -.12em;
+      color: rgba(255,255,255,.07);
+      pointer-events: none;
+    }
+    .final-cta-inner { position: relative; z-index: 2; min-height: 360px; display: flex; align-items: center; justify-content: space-between; gap: 50px; }
+    .final-cta h2 { max-width: 700px; margin-bottom: 14px; }
+    .final-cta p { max-width: 600px; margin-bottom: 0; color: rgba(255,255,255,.88); }
+    .final-actions { display: grid; gap: 10px; min-width: 250px; }
+
+    .footer { background: #101010; color: #eee; padding: 64px 0 24px; }
+    .footer-grid { display: grid; grid-template-columns: 1.35fr .7fr .75fr .9fr; gap: 44px; padding-bottom: 42px; border-bottom: 1px solid #2b2b2b; }
+    .footer-brand .brand-mark { border-color: #fff; border-right-color: var(--orange); }
+    .footer-brand .brand-text strong { color: #fff; }
+    .footer-brand p { max-width: 360px; margin: 20px 0 0; color: #9f9f9f; font-size: .82rem; }
+    .footer h3 { margin-bottom: 18px; color: #fff; font-size: .82rem; text-transform: uppercase; letter-spacing: .08em; }
+    .footer-links { display: grid; gap: 10px; color: #a7a7a7; font-size: .8rem; }
+    .footer-links a:hover { color: var(--orange); }
+    .footer-bottom { padding-top: 24px; display: flex; justify-content: space-between; gap: 24px; color: #727272; font-size: .7rem; }
+
+    .whatsapp-float {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 40;
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      background: #25d366;
+      color: white;
+      box-shadow: 0 16px 34px rgba(17,17,17,.18);
+      transition: .2s ease;
+    }
+    .whatsapp-float:hover { transform: translateY(-3px); background: #1ebe5b; }
+    .whatsapp-float svg { width: 27px; height: 27px; }
+
+    @media (max-width: 1080px) {
+      .nav-links { display: none; }
+      .menu-btn { display: grid; place-items: center; }
+      .nav-actions .btn { display: none; }
+      .stock-grid { grid-template-columns: repeat(2, 1fr); }
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .review-card { flex-basis: calc((100% - 18px) / 2); }
+    }
+
+    @media (max-width: 860px) {
+      :root { --container: min(100% - 28px, 760px); }
+      .section { padding: 76px 0; }
+      .top-strip { display: none; }
+      .nav { min-height: 70px; }
+      .hero-grid, .finance-wrap, .trade-grid, .about-grid, .faq-wrap, .location-grid { grid-template-columns: 1fr; }
+      .hero-grid { min-height: auto; gap: 34px; padding: 60px 0 0; }
+      .hero-visual { min-height: 480px; margin-inline: calc((100vw - 100%) / -2); }
+      .hero-photo { inset: 0; border-radius: 0; }
+      .hero-badge { left: 20px; bottom: 22px; }
+      .hero-tag { top: 16px; right: 20px; }
+      .stock-head { align-items: start; flex-direction: column; }
+      .finance-wrap { gap: 34px; }
+      .trade-grid { gap: 34px; }
+      .trade-photo { order: 2; min-height: 420px; }
+      .trade-photo img { min-height: 420px; }
+      .about-grid { gap: 34px; }
+      .about-visual { min-height: 400px; order: 2; }
+      .about-visual img { min-height: 400px; }
+      .faq-wrap { gap: 28px; }
+      #localizacao { padding: 42px 0; }
+      .location-grid { gap: 18px; }
+      .final-cta-inner { min-height: 420px; align-items: flex-start; justify-content: center; flex-direction: column; }
+      .final-actions { min-width: 0; width: min(100%, 380px); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      :root { --container: calc(100% - 28px); }
+      .section { padding: 64px 0; }
+      .section-sm { padding: 56px 0; }
+      h1 { font-size: clamp(2.5rem, 13vw, 4.3rem); }
+      h2 { font-size: clamp(1.9rem, 9vw, 2.7rem); }
+      .hero-copy p { font-size: .94rem; }
+      .hero-ctas { display: grid; grid-template-columns: 1fr; }
+      .hero-ctas .btn { width: 100%; }
+      .hero-meta { display: grid; gap: 8px; }
+      .hero-visual { min-height: 390px; }
+      .hero-badge { width: 190px; }
+      .stock-grid, .features-grid { grid-template-columns: 1fr; }
+      .review-card { flex-basis: 100%; min-height: 240px; }
+      .reviews-controls { margin-top: 16px; }
+      .filters { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 5px; scrollbar-width: none; }
+      .filters::-webkit-scrollbar { display: none; }
+      .filter-btn { white-space: nowrap; }
+      .stock-bottom { align-items: flex-start; flex-direction: column; }
+      .stock-bottom .btn { width: 100%; }
+      .form-card { min-height: 0; padding: 28px 22px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .field.full { grid-column: auto; }
+      .about-visual { min-height: 320px; }
+      .about-visual img { min-height: 320px; }
+      .about-numbers { grid-template-columns: 1fr; }
+      .reviews-top { align-items: start; flex-direction: column; }
+      .reviews-score { text-align: left; }
+      #localizacao { padding: 36px 0; }
+      .location-card { padding: 24px 20px; }
+      .map, .map iframe { min-height: 250px; }
+      .final-cta-inner { min-height: 450px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+      .footer-bottom { flex-direction: column; }
+      .whatsapp-float { width: 54px; height: 54px; right: 14px; bottom: 14px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-strip">
+    <div class="container top-strip-inner">
+      <div class="top-strip-group">
+        <span class="top-item"><i data-lucide="map-pin"></i> Av. Gen. Mello, Cuiabá - MT</span>
+        <span class="top-item"><i data-lucide="clock-3"></i> Atendimento em horário comercial</span>
+      </div>
+      <div class="top-strip-group">
+        <a class="top-item" href="tel:+5565993310135"><i data-lucide="phone"></i> (65) 99331-0135</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="#inicio" aria-label="TH Veículos - Início">
+        <span class="brand-mark">TH</span>
+        <span class="brand-text"><strong>TH VEÍCULOS</strong><span>Multimarcas</span></span>
+      </a>
+
+      <nav class="nav-links" aria-label="Navegação principal">
+        <a class="nav-link" href="#estoque">Veículos</a>
+        <a class="nav-link" href="#diferenciais">Diferenciais</a>
+        <a class="nav-link" href="#financiamento">Financiamento</a>
+        <a class="nav-link" href="#troca">Seu usado</a>
+        <a class="nav-link" href="#sobre">A loja</a>
+        <a class="nav-link" href="#localizacao">Localização</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="btn btn-primary" href="https://wa.me/5565993310135?text=Olá%20TH%20Veículos!%20Gostaria%20de%20mais%20informações." target="_blank" rel="noopener">
+          <i data-lucide="message-circle"></i> Falar no WhatsApp
+        </a>
+        <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false"><i data-lucide="menu"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <nav aria-label="Navegação móvel">
+      <a href="#estoque">Veículos em destaque</a>
+      <a href="#diferenciais">Diferenciais</a>
+      <a href="#financiamento">Financiamento</a>
+      <a href="#troca">Seu usado na troca</a>
+      <a href="#sobre">Sobre a TH Veículos</a>
+      <a href="#avaliacoes">Avaliações</a>
+      <a href="#faq">Dúvidas frequentes</a>
+      <a href="#localizacao">Localização</a>
+    </nav>
+    <a class="btn btn-primary" href="https://wa.me/5565993310135?text=Olá%20TH%20Veículos!%20Gostaria%20de%20mais%20informações." target="_blank" rel="noopener">Chamar no WhatsApp</a>
+  </div>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Revenda multimarcas em Cuiabá</span>
+          <h1>Seu próximo carro começa com uma escolha <span>segura.</span></h1>
+          <p>Veículos para diferentes perfis, atendimento próximo e negociação objetiva. Conheça o estoque da TH Veículos e encontre uma opção que faça sentido para o seu momento.</p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="#estoque"><i data-lucide="car-front"></i> Ver veículos</a>
+            <a class="btn btn-ghost-light" href="https://wa.me/5565993310135?text=Olá%20TH%20Veículos!%20Quero%20conhecer%20o%20estoque." target="_blank" rel="noopener"><i data-lucide="message-circle"></i> Falar no WhatsApp</a>
+          </div>
+          <div class="hero-meta">
+            <span><i data-lucide="map-pin"></i> Av. Gen. Mello, Cuiabá - MT</span>
+            <span><i data-lucide="star"></i> 5,0 no Google • 14 avaliações</span>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-label="Veículo em exposição na TH Veículos">
+          <div class="hero-photo">
+            <img src="https://www.usadofacil.com.br/fotoscarrosano/2026/07/1371423-m.jpg?0=" alt="Volkswagen Amarok em exposição na TH Veículos" />
+          </div>
+          <div class="hero-badge">
+            <div class="rating"><strong>5,0</strong><span class="stars">★★★★★</span></div>
+            <p>Avaliação pública exibida no Google, com 14 avaliações informadas.</p>
+          </div>
+          <div class="hero-tag"><i data-lucide="navigation"></i> Cuiabá • MT</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="estoque">
+      <div class="container">
+        <div class="stock-head">
+          <div>
+            <span class="eyebrow">Estoque em destaque</span>
+            <h2>Veículos para comparar com calma.</h2>
+            <p class="lead">Uma seleção do estoque anunciado pela TH Veículos. Fale com a equipe para confirmar disponibilidade e agendar uma visita.</p>
+          </div>
+          <a class="btn btn-secondary" href="https://www.usadofacil.com.br/THVeiculos" target="_blank" rel="noopener">Ver estoque completo <i data-lucide="external-link"></i></a>
+        </div>
+
+        <div class="filters" aria-label="Filtrar veículos">
+          <button class="filter-btn active" data-filter="all">Todos</button>
+          <button class="filter-btn" data-filter="suv">SUVs</button>
+          <button class="filter-btn" data-filter="sedan">Sedãs</button>
+          <button class="filter-btn" data-filter="pickup">Picapes</button>
+        </div>
+
+        <div class="stock-grid">
+          <article class="vehicle-card" data-category="sedan">
+            <div class="vehicle-image">
+              <img loading="lazy" src="https://www.usadofacil.com.br/fotoscarrosano/2026/03/1331309-m.jpg?11082026220025=" alt="Audi A5 Sportback S-Line branco na TH Veículos" />
+              <span class="vehicle-badge">Destaque</span>
+            </div>
+            <div class="vehicle-body">
+              <div class="vehicle-brand">Audi</div>
+              <h3 class="vehicle-title">A5 Sportback S-Line 2.0 TFSI S-tronic</h3>
+              <div class="vehicle-specs">
+                <span class="spec"><i data-lucide="calendar-days"></i> 2019/2019</span>
+                <span class="spec"><i data-lucide="gauge"></i> 40.000 km</span>
+                <span class="spec"><i data-lucide="settings-2"></i> S-tronic</span>
+                <span class="spec"><i data-lucide="fuel"></i> Gasolina</span>
+              </div>
+              <div class="vehicle-price"><small>Preço anunciado</small><strong>R$ 159.900</strong></div>
+              <div class="vehicle-actions">
+                <a class="btn btn-dark vehicle-whatsapp" href="#" data-vehicle="Audi A5 Sportback S-Line 2019/2019">Tenho interesse</a>
+                <a class="btn btn-secondary icon-btn" href="https://wa.me/5565993310135?text=Olá%20TH%20Veículos!%20Quero%20saber%20mais%20sobre%20o%20Audi%20A5%20Sportback." target="_blank" rel="noopener" aria-label="WhatsApp sobre Audi A5"><i data-lucide="message-circle"></i></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="vehicle-card" data-category="pickup">
+            <div class="vehicle-image">
+              <img loading="lazy" src="https://www.usadofacil.com.br/fotoscarrosano/2026/07/1371423-m.jpg?0=" alt="Volkswagen Amarok Highline cinza na TH Veículos" />
+              <span class="vehicle-badge">2025/2026</span>
+            </div>
+            <div class="vehicle-body">
+              <div class="vehicle-brand">Volkswagen</div>
+              <h3 class="vehicle-title">Amarok Highline CD 3.0 4x4 Turbo Automático Diesel</h3>
+              <div class="vehicle-specs">
+                <span class="spec"><i data-lucide="calendar-days"></i> 2025/2026</span>
+                <span class="spec"><i data-lucide="gauge"></i> 1 km</span>
+                <span class="spec"><i data-lucide="settings-2"></i> Automático</span>
+                <span class="spec"><i data-lucide="fuel"></i> Diesel</span>
+              </div>
+              <div class="vehicle-price"><small>Preço anunciado</small><strong>R$ 299.999</strong></div>
+              <div class="vehicle-actions">
+                <a class="btn btn-dark vehicle-whatsapp" href="#" data-vehicle="Volkswagen Amarok Highline 2025/2026">Tenho interesse</a>
+                <a class="btn btn-secondary icon-btn" href="https://wa.me/5565993310135?text=Olá%20TH%20Veículos!%20Quero%20saber%20mais%20sobre%20a%20Amarok%20Highline." target="_blank" rel="noopener" aria-label="WhatsApp sobre Amarok"><i data-lucide="message-circle"></i></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="vehicle-card" data-category="suv">
+            <div class="vehicle-image">
+              <img loading="lazy" src="https://www.usadofacil.com.br/fotoscarrosano/2026/08/1376759-m.jpg?0=" alt="Jeep Compass Longitude branco na TH Veículos" />
+              <span class="vehicle-badge">SUV</span>
+            </div>
+            <div class="vehicle-body">
+              <div class="vehicle-brand">Jeep</div>
+              <h3 class="vehicle-title">Compass Longitude 2.0 4x2 Automático Flex</h3>
+              <div class="vehicle-specs">
+                <span class="spec"><i data-lucide="calendar-days"></i> 2019/2020</span>
+                <span class="spec"><i data-lucide="gauge"></i> 70.000 km</span>
+                <span class="spec"><i data-lucide="settings-2"></i> Automático</span>
+                <span class="spec"><i data-lucide="fuel"></i> Flex</span>
+              </div>
+              <div class="vehicle-price"><small>Preço anunciado</small><strong>R$ 92.990</strong></div>
+              <div class="vehicle-actions">
+                <a class="btn btn-dark vehicle-whatsapp" href="#" data-vehicle="Jeep Compass Longitude 2019/2020">Tenho interesse</a>
+                <a class="btn btn-secondary icon-btn" href="https://wa.me/5565993310135?text=Olá%20TH%20Veículos!%20Quero%20saber%20mais%20sobre%20o%20Compass%20Longitude." target="_blank" rel="noopener" aria-label="WhatsApp sobre Compass Longitude"><i data-lucide="message-circle"></i></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="vehicle-card" data-category="suv">
+            <div class="vehicle-image">
+              <img loading="lazy" src="https://www.usadofacil.com.br/fotoscarrosano/2026/07/1372655-m.jpg?0=" alt="Jeep Compass Limited cinza na TH Veículos" />
+            </div>
+            <div class="vehicle-body">
+              <div class="vehicle-brand">Jeep</div>
+              <h3 class="vehicle-title">Compass Limited 2.0 4x2 Automático Flex</h3>
+              <div class="vehicle-specs">
+                <span class="spec"><i data-lucide="calendar-days"></i> 2019/2019</span>
+                <span class="spec"><i data-lucide="gauge"></i> 65.000 km</span>
+                <span class="spec"><i data-lucide="settings-2"></i> Automático</span>
+                <span class="spec"><i data-lucide="fuel"></i> Flex</span>
+              </div>
+              <div class="vehicle-price"><small>Preço anunciado</small><strong>R$ 89.990</strong></div>
+              <div class="vehicle-actions">
+                <a class="btn btn-dark vehicle-whatsapp" href="#" data-vehicle="Jeep Compass Limited 2019/2019">Tenho interesse</a>
+                <a class="btn btn-secondary icon-btn" href="https://wa.me/5565993310135?text=Olá%20TH%20Veículos!%20Quero%20saber%20mais%20sobre%20o%20Compass%20Limited." target="_blank" rel="noopener" aria-label="WhatsApp sobre Compass Limited"><i data-lucide="message-circle"></i></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="vehicle-card" data-category="suv">
+            <div class="vehicle-image">
+              <img loading="lazy" src="https://www.usadofacil.com.br/fotoscarrosano/2026/05/1348825-m.jpg?16072026164019=" alt="Toyota Corolla Cross XRX preto na TH Veículos" />
+              <span class="vehicle-badge">Híbrido</span>
+            </div>
+            <div class="vehicle-body">
+              <div class="vehicle-brand">Toyota</div>
+              <h3 class="vehicle-title">Corolla Cross XRX 1.8 16V Automático Híbrido</h3>
+              <div class="vehicle-specs">
+                <span class="spec"><i data-lucide="calendar-days"></i> 2021/2022</span>
+                <span class="spec"><i data-lucide="gauge"></i> 80.000 km</span>
+                <span class="spec"><i data-lucide="settings-2"></i> Automático</span>
+                <span class="spec"><i data-lucide="battery-charging"></i> Híbrido</span>
+              </div>
+              <div class="vehicle-price"><small>Preço anunciado</small><strong>R$ 139.999</strong></div>
+              <div class="vehicle-actions">
+                <a class="btn btn-dark vehicle-whatsapp" href="#" data-vehicle="Toyota Corolla Cross XRX 2021/2022">Tenho interesse</a>
+                <a class="btn btn-secondary icon-btn" href="https://wa.me/5565993310135?text=Olá%20TH%20Veículos!%20Quero%20saber%20mais%20sobre%20o%20Corolla%20Cross%20XRX." target="_blank" rel="noopener" aria-label="WhatsApp sobre Corolla Cross"><i data-lucide="message-circle"></i></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="vehicle-card" data-category="sedan">
+            <div class="vehicle-image">
+              <img loading="lazy" src="https://www.usadofacil.com.br/fotoscarrosano/2026/07/1371713-m.jpg?01082026093156=" alt="Toyota Corolla Altis Premium preto na TH Veículos" />
+            </div>
+            <div class="vehicle-body">
+              <div class="vehicle-brand">Toyota</div>
+              <h3 class="vehicle-title">Corolla Altis Premium 2.0 Automático Flex</h3>
+              <div class="vehicle-specs">
+                <span class="spec"><i data-lucide="calendar-days"></i> 2022/2022</span>
+                <span class="spec"><i data-lucide="gauge"></i> 80.000 km</span>
+                <span class="spec"><i data-lucide="settings-2"></i> Automático</span>
+                <span class="spec"><i data-lucide="fuel"></i> Flex</span>
+              </div>
+              <div class="vehicle-price"><small>Preço anunciado</small><strong>R$ 129.900</strong></div>
+              <div class="vehicle-actions">
+                <a class="btn btn-dark vehicle-whatsapp" href="#" data-vehicle="Toyota Corolla Altis Premium 2022/2022">Tenho interesse</a>
+                <a class="btn btn-secondary icon-btn" href="https://wa.me/5565993310135?text=Olá%20TH%20Veículos!%20Quero%20saber%20mais%20sobre%20o%20Corolla%20Altis%20Premium." target="_blank" rel="noopener" aria-label="WhatsApp sobre Corolla Altis"><i data-lucide="message-circle"></i></a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="stock-bottom">
+          <p><strong>Encontrou um modelo interessante?</strong> A equipe pode enviar fotos, detalhes e disponibilidade pelo WhatsApp.</p>
+          <a class="btn btn-primary" href="https://wa.me/5565993310135?text=Olá%20TH%20Veículos!%20Gostaria%20de%20receber%20opções%20do%20estoque." target="_blank" rel="noopener">Pedir opções no WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-gray" id="diferenciais">
+      <div class="container">
+        <span class="eyebrow">Escolha com mais confiança</span>
+        <h2>Um atendimento que simplifica a compra.</h2>
+        <p class="lead">Da primeira conversa à entrega, a proposta é tornar a negociação clara, organizada e compatível com o que você procura.</p>
+
+        <div class="features-grid">
+          <article class="feature-card">
+            <div class="feature-icon"><i data-lucide="messages-square"></i></div>
+            <h3>Atendimento próximo</h3>
+            <p>Conversa objetiva para entender seu perfil, faixa de investimento e o tipo de veículo ideal.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon"><i data-lucide="file-check-2"></i></div>
+            <h3>Negociação organizada</h3>
+            <p>Informações do veículo, valores e etapas da negociação apresentados de forma clara antes de avançar.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon"><i data-lucide="badge-dollar-sign"></i></div>
+            <h3>Financiamento</h3>
+            <p>Possibilidade de encaminhar proposta para análise de crédito conforme perfil e condições disponíveis.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon"><i data-lucide="repeat-2"></i></div>
+            <h3>Seu usado na troca</h3>
+            <p>Envie os dados do seu veículo e solicite uma avaliação para utilizá-lo na composição da negociação.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="financiamento">
+      <div class="container finance-wrap">
+        <div class="finance-content">
+          <span class="eyebrow">Financiamento</span>
+          <h2>Simule seu financiamento de forma simples.</h2>
+          <p class="lead">Informe o veículo, a entrada e o prazo desejado. A equipe recebe sua solicitação pelo WhatsApp e orienta os próximos passos.</p>
+
+          <div class="process">
+            <div class="process-item">
+              <span class="process-num">01</span>
+              <div><strong>Escolha o veículo</strong><span>Informe o modelo que deseja financiar.</span></div>
+            </div>
+            <div class="process-item">
+              <span class="process-num">02</span>
+              <div><strong>Defina entrada e prazo</strong><span>Envie uma referência para a análise.</span></div>
+            </div>
+            <div class="process-item">
+              <span class="process-num">03</span>
+              <div><strong>Receba as condições</strong><span>A proposta depende da análise de crédito.</span></div>
+            </div>
+          </div>
+          <p class="finance-note">Financiamento sujeito à análise e aprovação de crédito. Taxas e condições variam conforme instituição financeira, veículo e perfil do cliente.</p>
+        </div>
+
+        <form class="form-card" data-whatsapp-form="financiamento">
+          <h3>Simule agora</h3>
+          <p>Preencha os dados abaixo e envie sua solicitação diretamente para a equipe.</p>
+          <div class="form-grid">
+            <div class="field full">
+              <label for="finNome">Seu nome</label>
+              <input id="finNome" name="nome" type="text" placeholder="Como podemos te chamar?" required />
+            </div>
+            <div class="field full">
+              <label for="finVeiculo">Veículo de interesse</label>
+              <input id="finVeiculo" name="veiculo" type="text" placeholder="Ex.: Jeep Compass Longitude" required />
+            </div>
+            <div class="field">
+              <label for="finEntrada">Valor de entrada</label>
+              <input id="finEntrada" name="entrada" type="text" inputmode="numeric" placeholder="Ex.: R$ 30.000" />
+            </div>
+            <div class="field">
+              <label for="finPrazo">Prazo desejado</label>
+              <select id="finPrazo" name="prazo">
+                <option value="">Selecionar</option>
+                <option>24 meses</option>
+                <option>36 meses</option>
+                <option>48 meses</option>
+                <option>60 meses</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn btn-primary" type="submit"><i data-lucide="send"></i> Enviar para análise</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="section" id="troca">
+      <div class="container trade-grid">
+        <div class="trade-photo">
+          <img loading="lazy" src="https://www.usadofacil.com.br/fotoscarrosano/2026/08/1376286-m.jpg?13082026=" alt="Picape em exposição no showroom da TH Veículos" />
+          <div class="trade-float">
+            <strong>Seu carro pode fazer parte da negociação.</strong>
+            <span>Envie os dados iniciais e siga a avaliação diretamente com a equipe.</span>
+          </div>
+        </div>
+        <div>
+          <span class="eyebrow">Seu usado na troca</span>
+          <h2>Quer trocar de carro? Comece pela avaliação do seu atual.</h2>
+          <p class="lead">Passe as informações básicas do seu veículo. A equipe orienta os próximos passos e pode solicitar fotos ou uma avaliação presencial.</p>
+
+          <div class="trade-list">
+            <div class="trade-list-item">
+              <span class="trade-list-icon"><i data-lucide="clipboard-list"></i></span>
+              <div><h3>1. Informe os dados</h3><p>Modelo, ano, quilometragem aproximada e condições gerais.</p></div>
+            </div>
+            <div class="trade-list-item">
+              <span class="trade-list-icon"><i data-lucide="camera"></i></span>
+              <div><h3>2. Envie fotos</h3><p>Pelo WhatsApp, envie imagens externas e internas para uma análise inicial.</p></div>
+            </div>
+            <div class="trade-list-item">
+              <span class="trade-list-icon"><i data-lucide="handshake"></i></span>
+              <div><h3>3. Monte a negociação</h3><p>Com a avaliação, veja como o seu veículo pode compor a compra do próximo.</p></div>
+            </div>
+          </div>
+
+          <a class="btn btn-primary" href="https://wa.me/5565993310135?text=Olá%20TH%20Veículos!%20Quero%20avaliar%20meu%20veículo%20para%20troca." target="_blank" rel="noopener"><i data-lucide="repeat-2"></i> Avaliar meu veículo</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-gray" id="sobre">
+      <div class="container about-grid">
+        <div>
+          <span class="eyebrow">Sobre a TH Veículos</span>
+          <h2>Uma revenda de Cuiabá com foco em atendimento e boas escolhas.</h2>
+          <p class="lead">A TH Veículos reúne veículos multimarcas e atende clientes que buscam comprar, trocar ou financiar com uma conversa direta e acompanhamento próximo durante a negociação.</p>
+          <p class="lead">A loja está localizada na Av. Gen. Mello, em Cuiabá, com ambiente de atendimento presencial e contato rápido pelo WhatsApp para tirar dúvidas, consultar disponibilidade e agendar test drive.</p>
+
+          <div class="about-numbers">
+            <div class="about-number"><strong>5,0</strong><span>nota informada no Google</span></div>
+            <div class="about-number"><strong>14</strong><span>avaliações informadas</span></div>
+            <div class="about-number"><strong>Cuiabá</strong><span>atendimento local</span></div>
+          </div>
+        </div>
+
+        <div class="about-visual" aria-label="Fachada de uma revenda de veículos — imagem demonstrativa">
+          <img loading="lazy" src="https://i.pinimg.com/736x/34/f0/f4/34f0f4016a23a4dbccdfe7b9a0cf2492.jpg" alt="Fachada de uma revendedora de veículos com carros expostos" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="avaliacoes">
+      <div class="container">
+        <div class="reviews-top">
+          <div>
+            <span class="eyebrow">Avaliações de clientes</span>
+            <h2>Experiências de quem já passou pela loja.</h2>
+            <p class="lead">Comentários fornecidos da ficha pública da TH Veículos, com exemplos adicionais para composição desta demonstração.</p>
+          </div>
+          <div class="reviews-score"><strong>5,0 ★</strong><span>com 14 avaliações informadas</span></div>
+        </div>
+
+        <div class="reviews-carousel" id="reviewsCarousel" aria-label="Carrossel de avaliações de clientes">
+          <div class="reviews-track" id="reviewsTrack">
+            <article class="review-card">
+              <div class="stars">★★★★★</div>
+              <blockquote>“Loja muito bem organizada, com ambiente climatizado para você esperar o fechamento do negócio. Com variedade grande de veículos e com pessoas bem qualificada para te atender.”</blockquote>
+              <div class="review-person"><span class="avatar">NJ</span><div><strong>Nicanor Junior</strong><span>Avaliação pública no Google</span></div></div>
+            </article>
+            <article class="review-card">
+              <div class="stars">★★★★★</div>
+              <blockquote>“Gostei muito do atendimento de todos principalmente Claudia, muito simpática, agilizou rapidinho, já estou com meu carro feliz da vida.”</blockquote>
+              <div class="review-person"><span class="avatar">MF</span><div><strong>Miliano França</strong><span>Avaliação pública no Google</span></div></div>
+            </article>
+            <article class="review-card">
+              <div class="stars">★★★★★</div>
+              <blockquote>“Recomendação de um amigo, ótimo atendimento.”</blockquote>
+              <div class="review-person"><span class="avatar">MN</span><div><strong>Marlon Nasser</strong><span>Avaliação pública no Google</span></div></div>
+            </article>
+            <article class="review-card">
+              <div class="stars">★★★★★</div>
+              <blockquote>“Atendimento muito atencioso desde o primeiro contato. Tiraram minhas dúvidas e deixaram toda a negociação bem clara.”</blockquote>
+              <div class="review-person"><span class="avatar">CT</span><div><strong>Cliente TH Veículos</strong><span>Depoimento demonstrativo</span></div></div>
+            </article>
+            <article class="review-card">
+              <div class="stars">★★★★★</div>
+              <blockquote>“Gostei da variedade de veículos e da forma como fui atendido. Consegui avaliar as opções com tranquilidade antes de decidir.”</blockquote>
+              <div class="review-person"><span class="avatar">CT</span><div><strong>Cliente TH Veículos</strong><span>Depoimento demonstrativo</span></div></div>
+            </article>
+            <article class="review-card">
+              <div class="stars">★★★★★</div>
+              <blockquote>“Equipe prestativa e processo bem explicado. O atendimento pelo WhatsApp também facilitou bastante antes de ir até a loja.”</blockquote>
+              <div class="review-person"><span class="avatar">CT</span><div><strong>Cliente TH Veículos</strong><span>Depoimento demonstrativo</span></div></div>
+            </article>
+          </div>
+        </div>
+        <div class="reviews-controls" aria-label="Controles do carrossel de avaliações">
+          <div class="reviews-dots" id="reviewsDots"></div>
+          <div class="reviews-arrows">
+            <button class="review-arrow" id="reviewsPrev" type="button" aria-label="Avaliações anteriores"><i data-lucide="arrow-left"></i></button>
+            <button class="review-arrow" id="reviewsNext" type="button" aria-label="Próximas avaliações"><i data-lucide="arrow-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container faq-wrap">
+        <div>
+          <span class="eyebrow">Dúvidas frequentes</span>
+          <h2>Informações para decidir com mais clareza.</h2>
+          <p class="lead">Se a sua dúvida for sobre um veículo específico, chame a equipe e confirme os detalhes daquela unidade.</p>
+          <a class="btn btn-secondary" href="https://wa.me/5565993310135?text=Olá%20TH%20Veículos!%20Tenho%20uma%20dúvida." target="_blank" rel="noopener">Tirar dúvida no WhatsApp</a>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-btn" aria-expanded="false">Vocês trabalham com financiamento? <i data-lucide="plus"></i></button>
+            <div class="faq-answer"><p>Sim. A proposta pode ser encaminhada para análise. Entrada, prazo, taxa e aprovação variam conforme instituição financeira, veículo e perfil de crédito.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-btn" aria-expanded="false">Posso usar meu carro como parte do pagamento? <i data-lucide="plus"></i></button>
+            <div class="faq-answer"><p>Você pode solicitar uma avaliação do seu veículo. A equipe pode pedir dados, fotos e, quando necessário, uma avaliação presencial antes de apresentar a condição de troca.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-btn" aria-expanded="false">Como funciona a garantia? <i data-lucide="plus"></i></button>
+            <div class="faq-answer"><p>As condições aplicáveis dependem do veículo e da negociação. Antes da compra, confirme com a equipe quais coberturas, documentos e condições estão vinculados à unidade escolhida.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-btn" aria-expanded="false">A documentação é transferida pela loja? <i data-lucide="plus"></i></button>
+            <div class="faq-answer"><p>A equipe orienta as etapas documentais da negociação. Prazos, custos e procedimentos devem ser confirmados no fechamento, conforme o veículo e a situação da compra.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-btn" aria-expanded="false">É possível reservar um veículo? <i data-lucide="plus"></i></button>
+            <div class="faq-answer"><p>Consulte a equipe sobre disponibilidade e condições de reserva da unidade de interesse antes de realizar qualquer pagamento.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-btn" aria-expanded="false">Posso agendar test drive? <i data-lucide="plus"></i></button>
+            <div class="faq-answer"><p>Sim. Entre em contato pelo WhatsApp para confirmar a disponibilidade do veículo e combinar o melhor horário para sua visita.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-gray" id="localizacao">
+      <div class="container location-grid">
+        <div class="location-card">
+          <span class="eyebrow">Visite a TH Veículos</span>
+          <h2>Veja o carro de perto antes de decidir.</h2>
+          <p class="lead">Agende sua visita, confirme a disponibilidade do veículo e conheça o estoque presencialmente.</p>
+
+          <div class="location-list">
+            <div class="location-row">
+              <span class="location-icon"><i data-lucide="map-pin"></i></span>
+              <div><strong>Endereço</strong><span>Av. Gen. Mello - Barbado, Cuiabá - MT, 78065-000</span></div>
+            </div>
+            <div class="location-row">
+              <span class="location-icon"><i data-lucide="clock-3"></i></span>
+              <div><strong>Horário</strong><span>Atendimento em horário comercial • confirme o funcionamento do dia pelo WhatsApp</span></div>
+            </div>
+            <div class="location-row">
+              <span class="location-icon"><i data-lucide="phone"></i></span>
+              <div><strong>Contato</strong><span>(65) 99331-0135</span></div>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&destination=Av.%20Gen.%20Mello%20-%20Barbado%2C%20Cuiabá%20-%20MT%2C%2078065-000" target="_blank" rel="noopener"><i data-lucide="navigation"></i> Como chegar</a>
+            <a class="btn btn-ghost-light" href="https://wa.me/5565993310135?text=Olá%20TH%20Veículos!%20Quero%20agendar%20uma%20visita." target="_blank" rel="noopener">Agendar visita</a>
+          </div>
+        </div>
+        <div class="map">
+          <iframe title="Mapa da TH Veículos em Cuiabá" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Av.%20Gen.%20Mello%20-%20Barbado%2C%20Cuiabá%20-%20MT%2C%2078065-000&output=embed"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-sm final-cta">
+      <div class="container final-cta-inner">
+        <div>
+          <span class="eyebrow" style="color:#fff">Próximo passo</span>
+          <h2>Encontre um veículo que combina com o seu momento.</h2>
+          <p>Consulte o estoque, tire suas dúvidas e agende uma visita à TH Veículos em Cuiabá.</p>
+        </div>
+        <div class="final-actions">
+          <a class="btn btn-dark" href="https://wa.me/5565993310135?text=Olá%20TH%20Veículos!%20Quero%20falar%20com%20um%20consultor." target="_blank" rel="noopener"><i data-lucide="message-circle"></i> Falar no WhatsApp</a>
+          <a class="btn btn-secondary" href="#estoque"><i data-lucide="car-front"></i> Ver veículos</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="#inicio">
+            <span class="brand-mark">TH</span>
+            <span class="brand-text"><strong>TH VEÍCULOS</strong><span>Multimarcas</span></span>
+          </a>
+          <p>Revenda de veículos em Cuiabá-MT. Estoque multimarcas, financiamento, avaliação do seu usado e atendimento direto pelo WhatsApp.</p>
+        </div>
+        <div>
+          <h3>Navegação</h3>
+          <div class="footer-links">
+            <a href="#estoque">Veículos</a>
+            <a href="#financiamento">Financiamento</a>
+            <a href="#troca">Seu usado</a>
+            <a href="#sobre">Sobre</a>
+          </div>
+        </div>
+        <div>
+          <h3>Atendimento</h3>
+          <div class="footer-links">
+            <a href="tel:+5565993310135">(65) 99331-0135</a>
+            <a href="https://wa.me/5565993310135" target="_blank" rel="noopener">WhatsApp</a>
+            <a href="#localizacao">Como chegar</a>
+            <a href="#faq">Dúvidas frequentes</a>
+          </div>
+        </div>
+        <div>
+          <h3>Endereço</h3>
+          <div class="footer-links">
+            <span>Av. Gen. Mello - Barbado</span>
+            <span>Cuiabá - MT</span>
+            <span>CEP 78065-000</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 TH Veículos. Todos os direitos reservados.</span>
+        <span>Valores e disponibilidade do estoque podem sofrer alterações. Consulte a equipe antes de fechar negócio.</span>
+      </div>
+    </div>
+  </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/5565993310135?text=Olá%20TH%20Veículos!%20Gostaria%20de%20mais%20informações." target="_blank" rel="noopener" aria-label="Falar com a TH Veículos no WhatsApp">
+    <i data-lucide="message-circle"></i>
+  </a>
+
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) lucide.createIcons();
+
+      const menuBtn = document.getElementById('menuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+
+      const closeMenu = () => {
+        mobileMenu.classList.remove('open');
+        mobileMenu.setAttribute('aria-hidden', 'true');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        menuBtn.innerHTML = '<i data-lucide="menu"></i>';
+        document.body.classList.remove('menu-open');
+        if (window.lucide) lucide.createIcons();
+      };
+
+      menuBtn.addEventListener('click', () => {
+        const open = !mobileMenu.classList.contains('open');
+        if (open) {
+          mobileMenu.classList.add('open');
+          mobileMenu.setAttribute('aria-hidden', 'false');
+          menuBtn.setAttribute('aria-expanded', 'true');
+          menuBtn.innerHTML = '<i data-lucide="x"></i>';
+          document.body.classList.add('menu-open');
+          if (window.lucide) lucide.createIcons();
+        } else {
+          closeMenu();
+        }
+      });
+
+      mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const filter = btn.dataset.filter;
+          document.querySelectorAll('.filter-btn').forEach(item => item.classList.remove('active'));
+          btn.classList.add('active');
+          document.querySelectorAll('.vehicle-card').forEach(card => {
+            card.hidden = filter !== 'all' && card.dataset.category !== filter;
+          });
+        });
+      });
+
+      document.querySelectorAll('.vehicle-whatsapp').forEach(link => {
+        link.addEventListener('click', (event) => {
+          event.preventDefault();
+          const vehicle = link.dataset.vehicle;
+          const text = `Olá TH Veículos! Tenho interesse no ${vehicle}. Gostaria de confirmar disponibilidade e receber mais detalhes.`;
+          window.open(`https://wa.me/5565993310135?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
+        });
+      });
+
+      document.querySelectorAll('[data-whatsapp-form]').forEach(form => {
+        form.addEventListener('submit', (event) => {
+          event.preventDefault();
+          const data = new FormData(form);
+          const tipo = form.dataset.whatsappForm;
+          let message = '';
+
+          if (tipo === 'financiamento') {
+            message = [
+              'Olá TH Veículos! Gostaria de solicitar uma análise de financiamento.',
+              `Nome: ${data.get('nome') || '-'}`,
+              `Veículo: ${data.get('veiculo') || '-'}`,
+              `Entrada: ${data.get('entrada') || 'a definir'}`,
+              `Prazo desejado: ${data.get('prazo') || 'a definir'}`
+            ].join('\n');
+          }
+
+          window.open(`https://wa.me/5565993310135?text=${encodeURIComponent(message)}`, '_blank', 'noopener');
+        });
+      });
+
+      const reviewsCarousel = document.getElementById('reviewsCarousel');
+      const reviewsTrack = document.getElementById('reviewsTrack');
+      const reviewsPrev = document.getElementById('reviewsPrev');
+      const reviewsNext = document.getElementById('reviewsNext');
+      const reviewsDots = document.getElementById('reviewsDots');
+
+      if (reviewsCarousel && reviewsTrack && reviewsPrev && reviewsNext && reviewsDots) {
+        const cards = Array.from(reviewsTrack.querySelectorAll('.review-card'));
+        let currentReview = 0;
+        let autoReviewTimer;
+
+        const visibleReviews = () => {
+          if (window.innerWidth <= 640) return 1;
+          if (window.innerWidth <= 1080) return 2;
+          return 3;
+        };
+
+        const maxReviewIndex = () => Math.max(0, cards.length - visibleReviews());
+
+        const renderReviewDots = () => {
+          reviewsDots.innerHTML = '';
+          for (let i = 0; i <= maxReviewIndex(); i += 1) {
+            const dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = `review-dot${i === currentReview ? ' active' : ''}`;
+            dot.setAttribute('aria-label', `Ir para avaliação ${i + 1}`);
+            dot.addEventListener('click', () => {
+              currentReview = i;
+              updateReviews();
+              restartReviewsAutoPlay();
+            });
+            reviewsDots.appendChild(dot);
+          }
+        };
+
+        const updateReviews = () => {
+          currentReview = Math.min(currentReview, maxReviewIndex());
+          const firstCard = cards[0];
+          if (!firstCard) return;
+          const gap = 18;
+          const step = firstCard.getBoundingClientRect().width + gap;
+          reviewsTrack.style.transform = `translateX(-${currentReview * step}px)`;
+          Array.from(reviewsDots.children).forEach((dot, index) => dot.classList.toggle('active', index === currentReview));
+        };
+
+        const nextReview = () => {
+          currentReview = currentReview >= maxReviewIndex() ? 0 : currentReview + 1;
+          updateReviews();
+        };
+
+        const prevReview = () => {
+          currentReview = currentReview <= 0 ? maxReviewIndex() : currentReview - 1;
+          updateReviews();
+        };
+
+        const startReviewsAutoPlay = () => {
+          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+          clearInterval(autoReviewTimer);
+          autoReviewTimer = setInterval(nextReview, 4500);
+        };
+
+        const restartReviewsAutoPlay = () => startReviewsAutoPlay();
+
+        reviewsNext.addEventListener('click', () => {
+          nextReview();
+          restartReviewsAutoPlay();
+        });
+        reviewsPrev.addEventListener('click', () => {
+          prevReview();
+          restartReviewsAutoPlay();
+        });
+        reviewsCarousel.addEventListener('mouseenter', () => clearInterval(autoReviewTimer));
+        reviewsCarousel.addEventListener('mouseleave', startReviewsAutoPlay);
+        reviewsCarousel.addEventListener('focusin', () => clearInterval(autoReviewTimer));
+        reviewsCarousel.addEventListener('focusout', startReviewsAutoPlay);
+        window.addEventListener('resize', () => {
+          currentReview = Math.min(currentReview, maxReviewIndex());
+          renderReviewDots();
+          updateReviews();
+        });
+
+        renderReviewDots();
+        updateReviews();
+        startReviewsAutoPlay();
+      }
+
+      document.querySelectorAll('.faq-btn').forEach(button => {
+        button.addEventListener('click', () => {
+          const item = button.closest('.faq-item');
+          const willOpen = !item.classList.contains('open');
+          document.querySelectorAll('.faq-item').forEach(faq => {
+            faq.classList.remove('open');
+            faq.querySelector('.faq-btn').setAttribute('aria-expanded', 'false');
+          });
+          if (willOpen) {
+            item.classList.add('open');
+            button.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
